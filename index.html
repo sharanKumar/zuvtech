@@ -57,6 +57,11 @@
             color: var(--primary-color) !important;
             text-decoration: none;
         }
+        
+        .navbar-brand img {
+            max-height: 40px;
+            width: auto;
+        }
 
         .navbar-nav .nav-link {
             font-weight: 500;
@@ -86,12 +91,27 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            min-height: 90vh;
+            background: 
+                linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(59, 130, 246, 0.9) 100%),
+                url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 80vh;
             display: flex;
             align-items: center;
+            justify-content: center;
             position: relative;
             overflow: hidden;
+            padding: 4rem 0;
+        }
+        
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
         }
 
         .hero::before {
@@ -114,15 +134,22 @@
             font-size: clamp(3rem, 5vw, 4.5rem);
             font-weight: 700;
             color: white;
-            margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            max-width: 600px;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
 
         .btn-light {
@@ -134,20 +161,32 @@
             font-weight: 600;
             margin-right: 1rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-light:hover {
+            background: var(--light-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .btn-outline-light {
             border: 2px solid white;
             color: white;
+            background: transparent;
             border-radius: 50px;
             padding: 1rem 2.5rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .btn-outline-light:hover {
             background: white;
             color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
         /* Stats Section */
@@ -382,6 +421,10 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -390,9 +433,28 @@
                 font-size: 1.1rem;
             }
             
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
             .btn-light, .btn-outline-light {
                 padding: 0.8rem 2rem;
                 margin-bottom: 1rem;
+                display: inline-block;
+                width: auto;
+            }
+            
+            .hero-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                margin-right: 0 !important;
             }
             
             .about-content {
@@ -461,7 +523,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">ZUVTECH</a>
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="logos/vector/default-monochrome-black.svg" alt="ZUVTECH Logo" height="40" class="me-2">
+            </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -490,20 +554,15 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
+            <div class="row justify-content-center w-100">
+                <div class="col-lg-8 col-xl-7 text-center">
                     <div class="hero-content fade-in-up">
-                        <h1 class="display-font">Professional Title Search Services</h1>
-                        <p>Providing comprehensive title search and examination services for title insurance companies nationwide. Fast, accurate, and reliable results you can trust.</p>
+                        <h1 class="display-font mb-4">Professional Title Search Services</h1>
+                        <p class="lead mb-5">Providing comprehensive title search and examination services for title insurance companies nationwide. Fast, accurate, and reliable results you can trust.</p>
                         <div class="hero-buttons">
-                            <a href="#services" class="btn btn-light">Our Services</a>
-                            <a href="#contact" class="btn btn-outline-light">Get Started</a>
+                            <a href="#services" class="btn btn-light btn-lg me-3 mb-3">Our Services</a>
+                            <a href="#contact" class="btn btn-outline-light btn-lg mb-3">Get Started</a>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image text-center">
-                        <i class="fas fa-file-contract" style="font-size: 15rem; color: rgba(255,255,255,0.1);"></i>
                     </div>
                 </div>
             </div>
@@ -534,8 +593,8 @@
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="stat-item">
-                        <span class="stat-number" data-count="150">0</span>
-                        <div class="stat-label">Insurance Partners</div>
+                        <span class="stat-number" data-count="40">0</span>
+                        <div class="stat-label">Clients</div>
                     </div>
                 </div>
             </div>
@@ -612,6 +671,50 @@
         </div>
     </section>
 
+    <!-- Professional Team Section -->
+    <section class="team-showcase" style="padding: 4rem 0; background: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                         alt="Professional team working on title search documents" 
+                         class="img-fluid rounded-3 shadow-lg"
+                         loading="lazy">
+                </div>
+                <div class="col-lg-6">
+                    <div class="ps-lg-4">
+                        <h3 class="display-font mb-3" style="color: var(--primary-color);">Professional Excellence in Every Search</h3>
+                        <p class="lead mb-4">Our experienced team of title professionals brings decades of combined expertise to every search, ensuring accuracy and reliability in every transaction.</p>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-users-cog text-primary fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-1">Expert Team</h6>
+                                        <small class="text-muted">Licensed professionals</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <i class="fas fa-clock text-primary fs-4"></i>
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <h6 class="mb-1">Fast Turnaround</h6>
+                                        <small class="text-muted">24-hour delivery</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
@@ -634,7 +737,11 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="text-center">
-                        <i class="fas fa-shield-alt" style="font-size: 20rem; color: var(--primary-color); opacity: 0.1;"></i>
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                             alt="Professional business meeting and title consultation" 
+                             class="img-fluid rounded-3 shadow-lg"
+                             style="max-height: 450px; object-fit: cover;"
+                             loading="lazy">
                     </div>
                 </div>
             </div>
@@ -646,6 +753,19 @@
         <div class="container">
             <h2 class="section-title display-font">Get In Touch</h2>
             <p class="section-subtitle">Ready to partner with us? Contact us today for a quote or to discuss your title search needs.</p>
+            
+            <!-- Contact Hero Image -->
+            <div class="row mb-5">
+                <div class="col-12">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1556745757-8d76bdb6984b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                             alt="Professional handshake and business meeting" 
+                             class="img-fluid rounded-3 shadow-lg"
+                             style="max-height: 300px; width: 100%; object-fit: cover;"
+                             loading="lazy">
+                    </div>
+                </div>
+            </div>
             
             <div class="row">
                 <div class="col-lg-8">
@@ -762,7 +882,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h5 class="display-font">ZUVTECH</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="logos/vector/default-monochrome-white.svg" alt="ZUVTECH Logo" height="50">
+                    </div>
                     <p>Your trusted partner for professional title search services. We provide accurate, reliable, and fast title searches for title insurance companies nationwide.</p>
                     <div class="social-links">
                         <a href="#" class="me-3"><i class="fab fa-linkedin"></i></a>
