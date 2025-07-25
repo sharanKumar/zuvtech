@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>ZUVTECH - Professional Title Search Services</title>
     
     <!-- Bootstrap 5.3 CSS -->
@@ -420,6 +420,26 @@
         }
 
         /* Responsive */
+        @media (max-width: 480px) {
+            .service-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .service-card h4 {
+                font-size: 1.2rem;
+            }
+            
+            .service-card p {
+                font-size: 0.9rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero {
                 background-attachment: scroll;
@@ -464,6 +484,43 @@
             
             .section-title {
                 font-size: 2rem;
+            }
+            
+            /* Services Section Mobile Fix */
+            .services {
+                padding: 3rem 0;
+            }
+            
+            .service-card {
+                padding: 2rem 1.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .service-card h4 {
+                font-size: 1.3rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .service-card p {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+            
+            .service-card:hover {
+                transform: none;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
             }
         }
 
@@ -1186,16 +1243,18 @@
             }, 500);
         });
 
-        // Add some interactive elements
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
+        // Add some interactive elements (only on non-touch devices)
+        if (window.matchMedia('(hover: hover)').matches) {
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
+        }
 
         // Mobile menu enhancement
         const navbarToggler = document.querySelector('.navbar-toggler');
